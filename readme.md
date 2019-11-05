@@ -19,7 +19,7 @@ To run this starter project, simply execute `rackup` in your console
 # 3. Challenge!
 ## The Task
 You need to create a simple web application that converts currency rates from EUR to USD and from EUR to CHF (both ways) from currencylayer API. the app will be mainly composed from 2 views:
-1. A view with a form includes the **value to convert**, **From** and **to** currencies. Submitting the form will show the result of the conversion but also it will **persist the all values in the database**.
+1. A view with a form includes the **value to convert**, **From** and **to** currencies. Submitting the form will show the result of the conversion but also it will **save the value, from , to and the result in the database**.
 2. A view includes a table with all the history of currency conversions.
 ## Constraints
 -   Use  `money-currencylayer-bank`  gem ​
