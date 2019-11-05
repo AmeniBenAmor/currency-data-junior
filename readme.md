@@ -34,4 +34,4 @@ To run tests simply execute `rspec`
 # 4. Finishing up
 - We are expecting your work to be hosted on github repo 
 - Send the challenge repo link in a email to **m.kheder@klarx.com** with subject **interns coding challenge**
-- We are expecting to recive your work within a week from reciving the challenge email.
+- We are expecting to receive your code within a week from getting the challenge email.
