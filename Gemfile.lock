@@ -106,6 +106,7 @@ PLATFORMS
 DEPENDENCIES
   datamapper (~> 1.2)
   dm-postgres-adapter (~> 1.2)
+  json
   money-currencylayer-bank
   rack (~> 2.0)
   rack-test (~> 1.1)
