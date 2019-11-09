@@ -7,6 +7,9 @@ describe 'Your application' do
     expect(last_response.status).to eq 200
   end
 
-  # todo: Add more tests here
-
+  it "page history works" do
+    get '/history'
+    expect(last_response.status).to eq 200
+  end
+  
 end
