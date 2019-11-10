@@ -6,7 +6,8 @@ class ApplicationController < Sinatra::Base
     	set :views, "app/views"
     	set :public_dir, "public"
 	  end
-	  before do
+	
+	  before do		 #set result on load to an empty strinf
 		@result= ''
 	  end
 
@@ -14,18 +15,18 @@ class ApplicationController < Sinatra::Base
 	#currencylayer api config
 	mclb = Money::Bank::CurrencylayerBank.new
 	mclb.access_key = ENV['ACCESS_KEY']
-	mclb.update_rates # Update rates (get new rates from remote if expired or access rates from cache)
-	Money.default_bank = mclb	# Set money default bank to Currencylayer bank
-	Money.locale_backend = :i18n
-	I18n.enforce_available_locales = false
+	mclb.update_rates				 		# Update rates (get new rates from remote if expired or access rates from cache)
+	Money.default_bank = mclb				# Set money default bank to Currencylayer bank
+	
 
-	def CheckCurrencies?(from,to)
-		if from == 'USD' || from == 'CHF'
+	def CheckCurrencies?(from,to) 			# return boolean value telling if the conversion operation is allowed  or not 
+		if from == 'USD' || from == 'CHF' 
 			 to == 'EUR'
 		else
 			 true
 		end
 	end
+
 	def Convert (amount , from , to)
 
 		if CheckCurrencies?(from,to)
@@ -34,14 +35,15 @@ class ApplicationController < Sinatra::Base
 
 		else
 
-			 "we don't support this type of conversion "
+			 "conversion "
 	
 		end
 	end
-	def Addconversion( amount , from , to, result)
+
+	def Addconversion( amount , from , to, result) 		#save the operation into database 
+
 		conversion=ConvertOperation.new
 		conversion.amount,conversion.from,conversion.to,conversion.result = amount , from , to, result
-		 
 		conversion.save
 	end
 
@@ -52,16 +54,15 @@ class ApplicationController < Sinatra::Base
 
 	post '/' do
 		@result = Convert(params[:amount],params[:from],params[:to])
-		Addconversion(params[:amount],params[:from],params[:to],@result)
 		erb :index
+		#Addconversion(params[:amount],params[:from],params[:to],@result)
+		
 
 	end
 	get '/history' do
-	@operations = ConvertOperation.all
-    erb :history
+			@operations = ConvertOperation.all
+			erb :history
 	end
 
 
-
-	
 end

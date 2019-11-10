@@ -15,3 +15,4 @@ gem "rack-test", "~> 1.1"
  
 gem 'money-currencylayer-bank'
 
+gem 'pry'

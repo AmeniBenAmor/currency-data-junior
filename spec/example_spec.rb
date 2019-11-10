@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe 'Your application' do
-
+describe ApplicationController do
   it "works!" do
     get '/'
     expect(last_response.status).to eq 200
@@ -12,4 +11,26 @@ describe 'Your application' do
     expect(last_response.status).to eq 200
   end
   
+  
+  it "post with empty parameters" do
+    params= { amount: '', from:'',to:''}
+    
+    post ('/') , params
+    expect(last_response.status).to eq 500
+     end
+
+  it "post without parameters" do
+
+      post ('/') 
+      expect(last_response.status).to eq 500
+      end
+
+    it "post with all param" do
+      params= { amount: '1', from:'USD',to:'EUR'}
+      
+      post ('/') , params
+      expect(last_response.status).to eq 200
+      end
+      
+
 end
