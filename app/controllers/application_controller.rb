@@ -54,14 +54,17 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post '/' do
+
 		@result = Convert(params[:amount],params[:from],params[:to])
 		
-		if @result != @message
+		if @result != @message # verify before saving to database
 		Addconversion(params[:amount],params[:from],params[:to],@result)
 		end
 		erb :index
 	end
+
 	get '/history' do
+		
 			@operations = ConvertOperation.all
 			erb :history
 	end
