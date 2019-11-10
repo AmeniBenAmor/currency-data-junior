@@ -9,6 +9,7 @@ class ApplicationController < Sinatra::Base
 	
 	  before do		 #set result on load to an empty strinf
 		@result= ''
+		@message="Verify Currencies Or type conversion not supported"
 	  end
 
 	  
@@ -21,9 +22,11 @@ class ApplicationController < Sinatra::Base
 
 	def CheckCurrencies?(from,to) 			# return boolean value telling if the conversion operation is allowed  or not 
 		if from == 'USD' || from == 'CHF' 
-			 to == 'EUR'
+			to == 'EUR'
+		elsif from =='Choose' || to =='Choose'
+			 false
 		else
-			 true
+			true
 		end
 	end
 
@@ -32,11 +35,9 @@ class ApplicationController < Sinatra::Base
 		if CheckCurrencies?(from,to)
 
 			Money.new( amount.to_i * 100, from).exchange_to(to).format 
-
 		else
-
-			 "conversion "
-	
+			
+			return @message
 		end
 	end
 
@@ -54,10 +55,11 @@ class ApplicationController < Sinatra::Base
 
 	post '/' do
 		@result = Convert(params[:amount],params[:from],params[:to])
-		erb :index
-		#Addconversion(params[:amount],params[:from],params[:to],@result)
 		
-
+		if @result != @message
+		Addconversion(params[:amount],params[:from],params[:to],@result)
+		end
+		erb :index
 	end
 	get '/history' do
 			@operations = ConvertOperation.all

@@ -29,7 +29,9 @@ describe ApplicationController do
       params= { amount: '1', from:'USD',to:'EUR'}
       
       post ('/') , params
-      expect(last_response.status).to eq 200
+      get :Convert
+      assigns().should eq('€0.91')
+
       end
       
 

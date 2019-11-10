@@ -1,4 +1,7 @@
 #hisotry of conversions table
+require 'dm-core'
+require 'dm-validations' 
+
 class ConvertOperation
 	include DataMapper::Resource
 
@@ -7,7 +10,11 @@ class ConvertOperation
 	property :from,       String   
 	property :to,         String  
 	property :result,     String    
-	
+
+	validates_presence_of :amount
+	validates_presence_of :to
+	validates_presence_of :result
+
 	
 
 
