@@ -3,7 +3,7 @@ gem "sinatra", "~> 2.0"
 
 gem "datamapper", "~> 1.2"
 
-gem "rack", "~> 2.0"
+gem "rack", "~> 2.1"
 
 gem "require_all", "~> 3.0"
 
