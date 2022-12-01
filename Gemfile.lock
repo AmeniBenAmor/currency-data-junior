@@ -70,10 +70,11 @@ GEM
       monetize (~> 1.4)
       money (~> 6.7)
     multi_json (1.14.1)
-    mustermann (1.0.3)
+    mustermann (2.0.2)
+      ruby2_keywords (~> 0.0.1)
     public_suffix (4.0.1)
-    rack (2.0.7)
-    rack-protection (2.0.7)
+    rack (2.2.4)
+    rack-protection (2.2.3)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -91,13 +92,14 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
-    sinatra (2.0.7)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.7)
+    ruby2_keywords (0.0.5)
+    sinatra (2.2.3)
+      mustermann (~> 2.0)
+      rack (~> 2.2)
+      rack-protection (= 2.2.3)
       tilt (~> 2.0)
     stringex (1.5.1)
-    tilt (2.0.10)
+    tilt (2.0.11)
     uuidtools (2.1.5)
 
 PLATFORMS
@@ -113,7 +115,7 @@ DEPENDENCIES
   rack-test (~> 1.1)
   require_all (~> 3.0)
   rspec (~> 3.9)
-  sinatra (~> 2.0)
+  sinatra (~> 2.2)
 
 BUNDLED WITH
    2.0.2
