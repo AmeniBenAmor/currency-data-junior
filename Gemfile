@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem "sinatra", "~> 2.0"
+gem "sinatra", "~> 2.2"
 
 gem "datamapper", "~> 1.2"
 
